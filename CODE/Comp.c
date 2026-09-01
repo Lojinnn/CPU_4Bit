@@ -17,13 +17,20 @@
 #define LOAD_RAM  0x9 // из RAM
 #define READ_TOG  0x10 // читаем переключатели
 
-#define MAX_PROG_SIZE 192
-#define MAX_STR_LENGHT 64
+#define MAX_PROG_SIZE     192
+#define MAX_STR_LENGHT    64
+#define MAX_LABELS        32
+#define MAX_LABELS_LENGHT 16
 
 //когда пишешь команду в cmd, то пропиши сначала это   chcp 65001
 //это позволит видеть русский текст, а не кракозябры
 
 // [System.IO.File]::ReadAllBytes("code.bin") | ForEach-Object { [Convert]::ToString($_, 2).PadLeft(8, '0') } | Out-File -FilePath "code.txt" -Encoding ASCII      это команда превращает наш code.bin в текстовый документ (это для того, чтобы удобнее было работать с Multisim)
+typedef struct
+{
+	char name [MAX_LABELS_LENGHT];
+	int address;
+}Label;
 
 typedef struct 
 {
