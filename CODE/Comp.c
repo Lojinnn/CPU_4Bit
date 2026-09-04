@@ -102,8 +102,7 @@ int parse_line(const char* line, uint8_t* opcode, uint8_t* operand){ // парс
 		return 1;
 	}
 }
-
-int compile(const char* input_file, const char* output_file){  // команда в cmd должна выглядеть так(показываю вторую строчку, первая должна быть gcc Comp.c -0 Comp): ./Comp <название_входного_файла>.asm <название_выходного_файла>.bin
+int compile(const char* input_file, const char* output_file){  // команда в cmd должна выглядеть так(показываю вторую строчку, первая должна быть gcc Comp.c -o Comp): ./Comp <название_входного_файла>.asm <название_выходного_файла>.bin
 	FILE* in = fopen(input_file, "r");
 	if(!in){  // чекаем, можем ли мы открыть файл
 		printf("Ошибка: не удалось открыть файл %s\n", input_file);
