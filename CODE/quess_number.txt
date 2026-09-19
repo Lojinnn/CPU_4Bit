@@ -1,0 +1,21 @@
+; init and number
+LOAD 7
+STORE_RAM 0
+
+; loop
+READ_TOG
+LOAD_RAM 0
+SUB
+
+;guess
+JUMP_Z 12
+JUMP 9
+LOAD 1
+OUT
+JUMP 2
+LOAD 15
+OUT
+JUMP 2
+LOAD 5
+OUT
+JUMP

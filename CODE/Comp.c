@@ -12,10 +12,12 @@
 #define SUB       0x4
 #define LOAD      0x5
 #define OUT       0x6
-#define JUMP       0x7
+#define JUMP      0x7
 #define STORE_RAM 0x8 // в RAM
 #define LOAD_RAM  0x9 // из RAM
-#define READ_TOG  0x10 // читаем переключатели
+#define READ_TOG  0xA // читаем переключатели
+#define JUMP_Z    0xC // флаг Z
+#define JUMP_C    0xE // флаг C
 
 #define MAX_PROG_SIZE     192
 #define MAX_STR_LENGHT    64
@@ -98,6 +100,16 @@ int parse_line(const char* line, uint8_t* opcode, uint8_t* operand){ // парс
 	}
 	else if(strcmp(command, "READ_TOG") == 0){
 		*opcode = READ_TOG;
+		*operand = value & 0xF;
+		return 1;
+	}
+	else if(strcmp(command, "JUMP_Z") == 0){
+		*opcode = JUMP_Z;
+		*operand = value & 0xF;
+		return 1;
+	}
+	else if(strcmp(command, "JUMP_C") == 0){
+		*opcode = JUMP_C;
 		*operand = value & 0xF;
 		return 1;
 	}
